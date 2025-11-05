@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 1 Results - Academic Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+      <link rel="icon" type="image/png" href="favicon.png">   
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h2>Academic Portfolio</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <a href="#" class="nav-link active">Academic Results ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="year1.html" class="active">Year 1 Results</a>
+                        <a href="year2.html">Year 2 Results</a>
+                        <a href="year3.html">Year 3 Results</a>
+                        <a href="year4.html">Year 4 Results</a>
+                    </div>
+                </li>
+                <li><a href="project.html" class="nav-link">Programming Projects</a></li>
+                <li><a href="Career.html" class="nav-link">Career Goals</a></li>
+                <li><a href="Profile.html" class="nav-link">Profile</a></li>
+                <li class="theme-toggle-alt" id="themeToggle">
+                    <span class="toggle-icon">☀️</span>
+                    <div class="toggle-track">
+                        <div class="toggle-thumb"></div>
+                    </div>
+                    <span class="toggle-icon">🌙</span>
+                </li>
+                <li><a href="index.html" class="nav-link logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="glass-card">
+            <div class="year-header">
+                <a href="home.html" class="back-btn">← Back to Portfolio</a>
+                <h1 class="page-title">First Year Academic Results</h1>
+                <div></div> <!-- Empty div for spacing -->
+            </div>
+            
+            <div class="results-container">
+                <div class="semester">
+                    <h3 class="semester-title">First Semester</h3>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Course Name</th>
+                                <th>Credits</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BIT101</td>
+                                <td>Business Information Systems</td>
+                                <td>3</td>
+                                <td class="grade-a">A</td>
+                            </tr>
+                            <tr>
+                                <td>BBA141</td>
+                                <td>Communication Skills</td>
+                                <td>3</td>
+                                <td class="grade-a">A</td>
+                            </tr>
+                            <tr>
+                                <td>BIT110</td>
+                                <td>Computer Systems Architecture</td>
+                                <td>4</td>
+                                <td class="grade-a">A</td>
+                            </tr>
+                            <tr>
+                                <td>BIT102</td>
+                                <td>Computer Mathematics</td>
+                                <td>3</td>
+                                <td class="grade-a">A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="gpa-summary">
+                        <h3>Semester 1 GPA</h3>
+                        <p>GPA: <span class="gpa-value">4.0</span></p>
+                        <p>Total Credits: <span class="gpa-value">13</span></p>
+                    </div>
+                </div>
+                
+                <div class="semester">
+                    <h3 class="semester-title">Second Semester</h3>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Course Name</th>
+                                <th>Credits</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BIT107</td>
+                                <td>Operating System Processes and Services</td>
+                                <td>4</td>
+                                <td class="grade-a">A</td>
+                            </tr>
+                            <tr>
+                                <td>BIT112</td>
+                                <td>Programming Concepts</td>
+                                <td>4</td>
+                                <td class="grade-a">A</td>
+                            </tr>
+                            <tr>
+                                <td>BIT121</td>
+                                <td>Data and Information Management</td>
+                                <td>3</td>
+                                <td class="grade-a">A</td>
+                            </tr>
+                            <tr>
+                                <td>BBA140</td>
+                                <td>Business Environment</td>
+                                <td>3</td>
+                                <td class="grade-a">A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="gpa-summary">
+                        <h3>Semester 2 GPA</h3>
+                        <p>GPA: <span class="gpa-value">4.0</span></p>
+                        <p>Total Credits: <span class="gpa-value">14</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gpa-summary">
+                <h3>Year 1 Overall Performance</h3>
+                <p>First Semester GPA: <span class="gpa-value">4.0</span></p>
+                <p>Second Semester GPA: <span class="gpa-value">4.0</span></p>
+                <p>Cumulative GPA: <span class="gpa-value">4.0</span></p>
+                <p>Total Credits Earned: <span class="gpa-value">27</span></p>
+            </div>
+            
+            <div class="performance-chart">
+                <h3>Grade Distribution</h3>
+                <div class="chart-container" id="chartContainer">
+                    <div class="chart-bar">
+                        <span class="chart-value">98%</span>
+                        <span class="chart-label">BIT101</span>
+                    </div>
+                    <div class="chart-bar">
+                        <span class="chart-value">96%</span>
+                        <span class="chart-label">BBA141</span>
+                    </div>
+                    <div class="chart-bar">
+                        <span class="chart-value">95%</span>
+                        <span class="chart-label">BIT110</span>
+                    </div>
+                    <div class="chart-bar">
+                        <span class="chart-value">97%</span>
+                        <span class="chart-label">BIT102</span>
+                    </div>
+                    <div class="chart-bar">
+                        <span class="chart-value">99%</span>
+                        <span class="chart-label">BIT107</span>
+                    </div>
+                    <div class="chart-bar">
+                        <span class="chart-value">96%</span>
+                        <span class="chart-label">BIT112</span>
+                    </div>
+                    <div class="chart-bar">
+                        <span class="chart-value">95%</span>
+                        <span class="chart-label">BIT121</span>
+                    </div>
+                    <div class="chart-bar">
+                        <span class="chart-value">98%</span>
+                        <span class="chart-label">BBA140</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Bubbles -->
+    <div class="bubbles" id="bubbles"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

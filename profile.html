@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="styles.css">
+      <link rel="icon" type="image/png" href="favicon.png">   
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle-container" style="position: fixed; top: 20px; right: 20px; z-index: 1001;">
+        <label class="theme-toggle">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <!-- Floating Bubbles -->
+    <div class="bubbles" id="bubbles"></div>
+
+    <!-- Header and Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h2>Academic Portfolio</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Academic Results ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="year1.html">Year 1 Results</a>
+                        <a href="year2.html">Year 2 Results</a>
+                        <a href="year3.html">Year 3 Results</a>
+                        <a href="year4.html">Year 4 Results</a>
+                    </div>
+                </li>
+                <li><a href="home.html" class="nav-link">Home</a></li>
+
+                <li><a href="project.html" class="nav-link">Programming Projects</a></li>
+                <li><a href="Career.html" class="nav-link">Career Goals</a></li>
+                <li><a href="Profile.html" class="nav-link active">Profile</a></li>
+                <li><a href="index.html" class="nav-link logout">Logout</a></li>
+                <li class="theme-toggle-alt" id="themeToggle">
+                    <span class="toggle-icon">☀️</span>
+                    <div class="toggle-track">
+                        <div class="toggle-thumb"></div>
+                    </div>
+                    <span class="toggle-icon">🌙</span>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="glass-card">
+            <h1 class="page-title">Student Profile</h1>
+            
+            <div class="profile-header">
+                <img class="profile-image" src= "images\IMG-20250710-WA0015.jpg" alt="Student Profile">
+                <div class="profile-info">
+                    <h2 style = "font-size: 50px" >Karen Zulu</h2>
+                                        <p class="bio">Information Systems and Technology student at University of Lusaka with a passion for Data Science and Mathematics. Currently in my fourth year, focusing on building practical skills through projects and internships.</p>
+                    <p class="bio">My academic journey combines technical expertise with analytical thinking, allowing me to approach problems from multiple perspectives and develop innovative solutions.</p>
+
+                </div>
+            </div>
+            
+            <div class="profile-details">
+                <div class="detail-card">
+                    <h3>Contact Information</h3>
+                    <p>Email: karenmbawezulu@gmail.com</p>
+                    <p>Phone: 077 379 7899</p>
+                    <p>Address: Farm No 10145/M, Westwood, Chilanga</p>
+                </div>
+                
+                <div class="detail-card">
+                    <h3>Academic Status</h3>
+                    <p>Current Year: Fourth Year</p>
+                    <p>Major: Information Systems and Technology</p>
+                    <p>Minor: Mathematics</p>
+                </div>
+                
+                <div class="detail-card">
+                    <h3>Enrollment Details</h3>
+                    <p>Student ID: BIT23222007</p>
+                    <p>Enrollment Status: Full-time</p>
+                    <p>Program: Bachelor of IT</p>
+                </div>
+            </div>
+            
+            <div class="results-section">
+                <h2>Academic Performance Highlights</h2>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Course Code</th>
+                            <th>Course Name</th>
+                            <th>Semester</th>
+                            <th>Credits</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DS101</td>
+                            <td>Introduction to Computer Systems</td>
+                            <td>Year 1, Semester 2</td>
+                            <td>4</td>
+                            <td class="grade-a">A</td>
+                        </tr>
+                        <tr>
+                            <td>MATH210</td>
+                            <td>Computer Mathematics</td>
+                            <td>Year 2, Semester 1</td>
+                            <td>3</td>
+                            <td class="grade-a">A</td>
+                        </tr>
+                        <tr>
+                            <td>STAT301</td>
+                            <td>Probability and Statistics</td>
+                            <td>Year 2, Semester 2</td>
+                            <td>4</td>
+                            <td class="grade-a">A-</td>
+                        </tr>
+                        <tr>
+                            <td>CS202</td>
+                            <td>Data Structures and Algorithms</td>
+                            <td>Year 3, Semester 1</td>
+                            <td>4</td>
+                            <td class="grade-b">B+</td>
+                        </tr>
+                        <tr>
+                            <td>DS301</td>
+                            <td>Machine Learning Fundamentals</td>
+                            <td>Year 3, Semester 2</td>
+                            <td>4</td>
+                            <td class="grade-a">A</td>
+                        </tr>
+                        <tr>
+                            <td>DS350</td>
+                            <td>Data Visualization</td>
+                            <td>Year 4, Semester 1</td>
+                            <td>3</td>
+                            <td class="grade-a">A</td>
+                        </tr>
+                        <tr>
+                            <td>DS410</td>
+                            <td>Big Data Analytics</td>
+                            <td>Year 4, Semester 1</td>
+                            <td>4</td>
+                            <td class="grade-a">A-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="gpa-summary">
+                <h3>Cumulative GPA</h3>
+                <div class="gpa-value">3.91/4.0</div>
+                <p>Dean's List</p>
+            </div>
+            
+            <div class="achievements-section">
+                <h2>Achievements & Skills</h2>
+                <div class="achievement-content">
+                    <div class="achievement-text">
+                        <h3>Academic Achievements</h3>
+                        <p>• Dean's List for 4 consecutive semesters</p>
+                        <p>• Recipient of the Data Science Excellence Scholarship 2024</p>
+                        <p>• Presented research at the National Data Science Conference 2024</p>
+                        <p>• Member of the University Honors Program</p>
+                    </div>
+                    <div class="skills">
+                        <h3>Technical Skills</h3>
+                        <ul class="skills-list">
+                            <li>Python (Pandas, NumPy, Scikit-learn)</li>
+                            <li>R Programming</li>
+                            <li>SQL & Database Management</li>
+                            <li>Data Visualization (Tableau, Matplotlib)</li>
+                            <li>Machine Learning Algorithms</li>
+                            <li>Statistical Analysis</li>
+                            <li>Big Data Technologies (Hadoop, Spark)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-section">
+                <h2>Data Science Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Predictive Analysis for Customer Churn</h3>
+                        <p>Developed a machine learning model to predict customer churn with 89% accuracy using Python and Scikit-learn.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Scikit-learn</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>COVID-19 Data Visualization Dashboard</h3>
+                        <p>Created an interactive dashboard to visualize COVID-19 trends and patterns using Tableau and Python.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Tableau</span>
+                            <span class="project-tag">Data Visualization</span>
+                            <span class="project-tag">Python</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Sentiment Analysis of Product Reviews</h3>
+                        <p>Built a natural language processing model to analyze and classify product reviews with an accuracy of 82%.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">NLP</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">TensorFlow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

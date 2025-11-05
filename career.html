@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Goals</title>
+    <link rel="icon" type="image/png" href="favicon.png">   
+    <style>
+        :root {
+            --primary-purple: #6A0DAD;
+            --primary-blue: #2563eb;
+            --primary-blue-hover: #1d4ed8;
+            --secondary-blue: rgba(106, 13, 173, 0.1);
+            --background-white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-color: #e0e0e0;
+            --border-radius: 10px;
+            --shadow-light: 0 4px 12px rgba(106, 13, 173, 0.1);
+            --shadow-medium: 0 8px 24px rgba(106, 13, 173, 0.15);
+            --transition: all 0.3s ease;
+            --error-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            
+            /* Light mode variables */
+            --bg-primary: #ffffff;
+            --bg-secondary: rgba(255, 255, 255, 0.8);
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-border: rgba(255, 255, 255, 0.5);
+            --header-bg: #ffffff;
+        }
+
+        .dark-mode {
+            --primary-purple: #8A6DD7;
+            --primary-blue: #3b82f6;
+            --primary-blue-hover: #2563eb;
+            --secondary-blue: rgba(138, 109, 215, 0.15);
+            --background-white: #1a1a2e;
+            --text-dark: #f0f2f5;
+            --text-light: #b0b0b0;
+            --border-color: #2d2d4d;
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --card-bg: rgba(30, 30, 30, 0.8);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --header-bg: #16213e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+           .theme-toggle-alt {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 20px;
+            background: var(--secondary-blue);
+            transition: var(--transition);
+        }
+
+        .theme-toggle-alt:hover {
+            background: var(--primary-purple);
+            color: white;
+        }
+
+        .toggle-track {
+            width: 40px;
+            height: 20px;
+            background: var(--border-color);
+            border-radius: 20px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .toggle-thumb {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .dark-mode .toggle-thumb {
+            transform: translateX(20px);
+        }
+
+        .toggle-icon {
+            font-size: 0.9rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .dark-mode .toggle-icon:first-child {
+            opacity: 0.5;
+        }
+
+        .dark-mode .toggle-icon:last-child {
+            opacity: 1;
+        }
+
+        .toggle-icon:first-child {
+            opacity: 1;
+        }
+
+        .toggle-icon:last-child {
+            opacity: 0.5;
+        }
+
+            .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(106, 13, 173, 0.1);
+            border: 1px solid rgba(106, 13, 173, 0.2);
+            opacity: 0.7;
+            animation: float 20s infinite ease-in-out;
+            filter: blur(3px);
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            25% { 
+                transform: translateY(-40px) translateX(20px) rotate(5deg);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(20px) translateX(-30px) rotate(-5deg);
+                opacity: 0.6;
+            }
+            75% { 
+                transform: translateY(-30px) translateX(-20px) rotate(3deg);
+                opacity: 0.75;
+            }
+        }
+
+        .bubble.small {
+            width: 60px;
+            height: 60px;
+        }
+
+        .bubble.medium {
+            width: 100px;
+            height: 100px;
+        }
+
+        .bubble.large {
+            width: 160px;
+            height: 160px;
+        }
+
+        .bubble.xlarge {
+            width: 200px;
+            height: 200px;
+        }
+
+            .header {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        .nav-brand h2 {
+            color: var(--primary-purple);
+            font-size: 1.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-purple);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+           .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            min-width: 180px;
+            z-index: 1001;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .dropdown-menu a:hover,
+        .dropdown-menu a.active {
+            background: var(--secondary-blue);
+            color: var(--primary-purple);
+        }
+
+        .logout {
+            color: var(--error-color) !important;
+        }
+
+            .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+              .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-medium);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .page-title {
+            color: var(--primary-purple);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--primary-purple);
+        }
+
+                .career-path {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .career-path {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .career-card {
+            background: var(--secondary-blue);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .career-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .career-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .career-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .career-card h3 {
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .career-card h4 {
+            margin: 1.5rem 0 1rem 0;
+            color: var(--text-primary);
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill-level {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            margin-top: 0.3rem;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+            width: 0;
+        }
+
+       
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes drawLine {
+            from {
+                height: 0;
+            }
+            to {
+                height: 100%;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 0 0 0 rgba(106, 13, 173, 0.7);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.1);
+                box-shadow: 0 0 0 10px rgba(106, 13, 173, 0);
+            }
+            100% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 0 0 0 rgba(106, 13, 173, 0);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+       
+        .timeline-container {
+            margin-bottom: 3rem;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-purple);
+            font-size: 1.8rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-purple);
+            transform: translateX(-50%);
+            animation: drawLine 1.5s ease-out forwards;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+            animation: slideInFromRight 0.8s ease forwards;
+        }
+
+        .timeline-item:nth-child(even) {
+            animation: slideInFromLeft 0.8s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.8s; }
+        .timeline-item:nth-child(3) { animation-delay: 1.0s; }
+        .timeline-item:nth-child(4) { animation-delay: 1.2s; }
+        .timeline-item:nth-child(5) { animation-delay: 1.4s; }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--primary-purple);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        .timeline-content {
+            width: calc(50% - 40px);
+            padding: 1.5rem;
+            background: var(--secondary-blue);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(106, 13, 173, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .timeline-content:hover::before {
+            left: 100%;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 40px;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-purple);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .timeline-content strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                margin-right: 0 !important;
+            }
+        }
+
+               .multimedia-section {
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 1.6s;
+        }
+
+        .multimedia-section h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--primary-purple);
+            text-align: center;
+        }
+        .audio-player {
+            background: var(--secondary-blue);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid var(--card-border);
+            margin-bottom: 2rem;
+        }
+
+        .audio-player audio {
+            width: 100%;
+            outline: none;
+        }
+
+       
+        .audio-visualizer {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100px;
+            gap: 4px;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+        }
+
+        .visualizer-bar {
+            width: 8px;
+            height: 10%;
+            background: linear-gradient(to top, var(--primary-purple), var(--primary-blue));
+            border-radius: 4px;
+            transition: height 0.1s ease, opacity 0.3s ease;
+            opacity: 0.3;
+        }
+
+        
+        .image-section {
+            margin-top: 2rem;
+        }
+
+        .image-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-purple);
+            text-align: center;
+        }
+
+        .career-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: var(--border-radius);
+            display: block;
+            margin: 0 auto;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--card-border);
+            opacity: 0;
+            transform: scale(0.9);
+            animation: fadeInScale 0.8s ease forwards;
+            animation-delay: 1.8s;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+            
+            .career-path {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating bubbles -->
+    <div class="bubbles" id="bubbles"></div>
+
+    <!-- Header and Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h2>Academic Portfolio</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Academic Results ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="year1.html">Year 1 Results</a>
+                        <a href="year2.html">Year 2 Results</a>
+                        <a href="year3.html">Year 3 Results</a>
+                        <a href="year4.html">Year 4 Results</a>
+                    </div>
+                </li>
+                <li><a href="home.html" class="nav-link">Home</a></li>
+                <li><a href="project.html" class="nav-link">Programming Projects</a></li>
+                <li><a href="Career.html" class="nav-link active">Career Goals</a></li>
+                <li><a href="Profile.html" class="nav-link">Profile</a></li>
+                
+                <li class="theme-toggle-alt" id="themeToggle">
+                    <span class="toggle-icon">☀️</span>
+                    <div class="toggle-track">
+                        <div class="toggle-thumb"></div>
+                    </div>
+                    <span class="toggle-icon">🌙</span>
+                </li>
+                
+                <li><a href="index.html" class="nav-link logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="glass-card">
+            <h1 class="page-title">My Career Goals</h1>
+            
+            <div class="career-path">
+                <div class="career-card">
+                    <h3>Data Analysis</h3>
+                    <p>I aim to become a skilled data analyst who can transform raw data into actionable insights. My goal is to work with organizations to make data-driven decisions that improve efficiency and outcomes.</p>
+                    <h4>Key Skills to Develop:</h4>
+                    <ul class="skills-list">
+                        <li>Statistical analysis and mathematics
+                            <div class="skill-level"><div class="skill-progress" data-width="85%"></div></div>
+                        </li>
+                        <li>SQL and database management
+                            <div class="skill-level"><div class="skill-progress" data-width="70%"></div></div>
+                        </li>
+                        <li>Data visualization (Tableau, Power BI)
+                            <div class="skill-level"><div class="skill-progress" data-width="60%"></div></div>
+                        </li>
+                        <li>Python for data analysis (Pandas, NumPy)
+                            <div class="skill-level"><div class="skill-progress" data-width="75%"></div></div>
+                        </li>
+                        <li>Excel advanced functions
+                            <div class="skill-level"><div class="skill-progress" data-width="80%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="career-card">
+                    <h3>Data Science</h3>
+                    <p>My long-term career goal is to transition into data science, focusing on machine learning and predictive modeling. I want to build systems that can learn from data and make accurate predictions.</p>
+                    <h4>Key Skills to Develop:</h4>
+                    <ul class="skills-list">
+                        <li>Machine learning algorithms
+                            <div class="skill-level"><div class="skill-progress" data-width="50%"></div></div>
+                        </li>
+                        <li>Python data science stack (Scikit-learn, TensorFlow)
+                            <div class="skill-level"><div class="skill-progress" data-width="65%"></div></div>
+                        </li>
+                        <li>Big data technologies (Hadoop, Spark)
+                            <div class="skill-level"><div class="skill-progress" data-width="40%"></div></div>
+                        </li>
+                        <li>Deep learning and neural networks
+                            <div class="skill-level"><div class="skill-progress" data-width="30%"></div></div>
+                        </li>
+                        <li>Statistical modeling and hypothesis testing
+                            <div class="skill-level"><div class="skill-progress" data-width="70%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Proper Vertical Timeline -->
+            <div class="timeline-container">
+                <h2 class="timeline-header">Career Development Timeline</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2023 - Present</h3>
+                            <strong>Bachelor's Degree in IT</strong>
+                            <p>Focusing on data-related courses and building foundational knowledge in programming, databases, and statistics.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2024</h3>
+                            <strong>Data Analysis Internship</strong>
+                            <p>Seeking an internship opportunity to apply academic knowledge in a real-world setting and gain practical experience.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2025</h3>
+                            <strong>Junior Data Analyst Position</strong>
+                            <p>Aim to secure an entry-level data analyst position to further develop skills and gain industry experience.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2026-2027</h3>
+                            <strong>Specialization & Advancement</strong>
+                            <p>Focus on developing machine learning expertise and potentially pursue certifications or specialized training.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2028+</h3>
+                            <strong>Data Scientist Role</strong>
+                            <p>Transition into a data scientist position, working on predictive modeling and advanced analytics projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Updated Multimedia Section with Audio Player and Image -->
+            <div class="multimedia-section">
+                <h2>Career Motivation</h2>
+                
+                <div class="audio-player">
+                    <audio id="careerAudio" controls>
+                        <source src="BR D PHIRI MINISTRY 29-06-2025.MP3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="audio-visualizer" id="audioVisualizer">
+                        <!-- Visualizer bars will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="image-section">
+                    <h3>My Career Vision</h3>
+                    <img src="images/carousel-1.jpg.jpg" alt="Career Vision" class="career-image">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+               class ThemeManager {
+            constructor() {
+                this.currentTheme = this.getStoredTheme() || this.getSystemTheme();
+                this.applyTheme(this.currentTheme);
+            }
+
+            getStoredTheme() {
+                return localStorage.getItem('theme');
+            }
+
+            getSystemTheme() {
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            setTheme(theme) {
+                this.currentTheme = theme;
+                localStorage.setItem('theme', theme);
+                this.applyTheme(theme);
+            }
+
+            applyTheme(theme) {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+            }
+
+            toggleTheme() {
+                const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+                this.setTheme(newTheme);
+            }
+
+            initializeThemeToggle(selector = '#themeToggle') {
+                const toggleElement = document.querySelector(selector);
+                if (toggleElement) {
+                    toggleElement.addEventListener('click', () => this.toggleTheme());
+                }
+            }
+        }
+
+        
+        window.themeManager = new ThemeManager();
+
+       
+        function createBubbles() {
+            const bubblesContainer = document.getElementById('bubbles');
+            const sizes = ['small', 'medium', 'large', 'xlarge'];
+                        bubblesContainer.innerHTML = '';
+            
+            
+            for (let i = 0; i < 15; i++) {
+                const bubble = document.createElement('div');
+                const sizeClass = sizes[Math.floor(Math.random() * sizes.length)];
+                
+                bubble.className = `bubble ${sizeClass}`;
+                
+                // Random position - ensure they're spread out
+                bubble.style.left = `${Math.random() * 100}vw`;
+                bubble.style.top = `${Math.random() * 100}vh`;
+                
+                // Random animation delay and duration for more natural movement
+                bubble.style.animationDelay = `${Math.random() * 10}s`;
+                bubble.style.animationDuration = `${15 + Math.random() * 15}s`;
+                
+                // Add slight color variation
+                const opacityVariation = 0.1 + Math.random() * 0.2;
+                bubble.style.background = `rgba(106, 13, 173, ${0.05 + opacityVariation})`;
+                bubble.style.borderColor = `rgba(106, 13, 173, ${0.1 + opacityVariation})`;
+                
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+
+        
+        function initSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                // Set the width with a delay to trigger the animation
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        }
+
+       
+        function initAudioVisualizer() {
+            const audio = document.getElementById('careerAudio');
+            const visualizer = document.getElementById('audioVisualizer');
+            
+            if (!audio || !visualizer) return;
+            
+                        for (let i = 0; i < 30; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'visualizer-bar';
+                visualizer.appendChild(bar);
+            }
+            
+            const bars = visualizer.querySelectorAll('.visualizer-bar');
+            let animationId;
+
+            function animateBars() {
+                bars.forEach(bar => {
+                    if (audio.paused) {
+                        bar.style.height = '10%';
+                        bar.style.opacity = '0.3';
+                        return;
+                    }
+
+                    const height = 10 + Math.random() * 90;
+                    const opacity = 0.3 + Math.random() * 0.7;
+                    
+                    bar.style.height = `${height}%`;
+                    bar.style.opacity = opacity;
+                });
+                
+                animationId = requestAnimationFrame(animateBars);
+            }
+
+            audio.addEventListener('play', () => {
+                console.log('🎵 Audio playing, starting visualization');
+                if (animationId) cancelAnimationFrame(animationId);
+                animateBars();
+            });
+
+            audio.addEventListener('pause', () => {
+                console.log('⏸️ Audio paused, stopping visualization');
+                if (animationId) cancelAnimationFrame(animationId);
+                bars.forEach(bar => {
+                    bar.style.height = '10%';
+                    bar.style.opacity = '0.3';
+                });
+            });
+
+                        if (!audio.paused) {
+                animateBars();
+            }
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            window.themeManager.initializeThemeToggle();
+            
+                        createBubbles();
+            initSkillBars();
+            initAudioVisualizer();
+        });
+    </script>
+</body>
+</html>

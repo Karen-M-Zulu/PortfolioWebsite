@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">   
+    <style>
+            .video-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+        }
+        
+        .instruction-video {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .responsive-video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        video::-webkit-media-controls-start-playback-button {
+            display: none !important;
+            -webkit-appearance: none;
+        }
+      
+        .video-description {
+            margin-top: 1rem;
+            text-align: center;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        
+        .custom-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .custom-play-button:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .custom-play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 15px solid #333;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            margin-left: 5px;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .bottom-video-container {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .bottom-video {
+            max-width: 800px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(147, 112, 219, 0.5);
+            animation: float 15s infinite ease-in-out;
+            box-shadow: 0 0 20px rgba(147, 112, 219, 0.2);
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(-40px) translateX(-10px) rotate(10deg);
+            }
+            75% {
+                transform: translateY(-20px) translateX(5px) rotate(5deg);
+            }
+        }
+
+        .student-hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .profile-image-container {
+            flex-shrink: 0;
+        }
+
+        .profile-image {
+            width: 500px;
+            height: 280px;
+            border-radius: 20%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .student-info h1 {
+            font-size: 2.5rem;
+            margin: 0 0 0.5rem 0;
+           
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-style: bold;
+        }
+
+        .student-info p {
+            font-size: 1.1rem;
+            color: #white;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .welcome-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            padding: 0 2rem 2rem 2rem;
+        }
+
+        .intro-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .bio {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .skills-highlight {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .skills-highlight h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 400;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            color: #666;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skills-list li:hover {
+            color: #764ba2;
+            transform: translateX(5px);
+        }
+
+            .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 450px; 
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;         }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-prev {
+            left: 10px;
+        }
+
+        .carousel-next {
+            right: 10px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .student-hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .welcome-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .student-info h1 {
+                font-size: 2rem;
+            }
+            
+            .carousel {
+                height: 300px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h2>Academic Portfolio</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <a href="#" class="nav-link active">Academic Results ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="year1.html">Year 1 Results</a>
+                        <a href="year2.html">Year 2 Results</a>
+                        <a href="year3.html">Year 3 Results</a>
+                        <a href="year4.html">Year 4 Results</a>
+                    </div>
+                </li>
+                <li><a href="project.html" class="nav-link">Programming Projects</a></li>
+                <li><a href="Career.html" class="nav-link">Career Goals</a></li>
+                <li><a href="Profile.html" class="nav-link">Profile</a></li>
+                <li class="theme-toggle-alt" id="themeToggle">
+                    <span class="toggle-icon">☀️</span>
+                    <div class="toggle-track">
+                        <div class="toggle-thumb"></div>
+                    </div>
+                    <span class="toggle-icon">🌙</span>
+                </li>
+                <li><a href="index.html" class="nav-link logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="glass-card welcome-section">
+            <div class="welcome-banner">
+                <div class="student-hero">
+                    <div class="profile-image-container">
+                      <img class="profile-image" src="images/IMG-20250710-WA0015.jpg" alt="Student Profile">
+                    </div>
+                    <div class="student-info">
+                        <h1>KAREN ZULU</h1>
+                        <p>Information Systems & Technology Student</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="datetime-section">
+                <div class="digital-datetime">
+                    <div class="datetime" id="datetime">Monday, January 1, 2023 12:00:00 PM</div>
+                </div>
+                <div class="analog-clock">
+                    <div class="clock-face">
+                        <div class="clock-center"></div>
+                        <div class="hour-hand" id="hourHand"></div>
+                        <div class="minute-hand" id="minuteHand"></div>
+                        <div class="second-hand" id="secondHand"></div>
+                        
+                        <div class="clock-numbers">
+                            <div class="clock-number" style="top: 7%; left: 50%; transform: translateX(-50%);">12</div>
+                            <div class="clock-number" style="top: 50%; right: 7%; transform: translateY(-50%);">3</div>
+                            <div class="clock-number" style="bottom: 7%; left: 50%; transform: translateX(-50%);">6</div>
+                            <div class="clock-number" style="top: 50%; left: 7%; transform: translateY(-50%);">9</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="welcome-content">
+                <div class="intro-text">
+                    <h2>WELCOME TO MY PORTAL</h2>
+                    <p class="bio">Information Systems and Technology student at University of Lusaka with a passion for Data Science and Mathematics. Currently in my fourth year, focusing on building practical skills through projects and internships.</p>
+                    <p class="bio">My academic journey combines technical expertise with analytical thinking, allowing me to approach problems from multiple perspectives and develop innovative solutions.</p>
+                </div>
+                
+                <div class="skills-highlight">
+                    <h3>Core Competencies</h3>
+                    <ul class="skills-list">
+                        <li>Data Analysis & Visualization</li>
+                        <li>Statistical Modeling</li>
+                        <li>Machine Learning</li>
+                        <li>Programming (Python, R, SQL)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+<h2 style = "text-align: center;color: purple;">Data Science Aesthetic</h2>
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <div class="carousel-item">
+                    <div class="image-container aspect-ratio-16-9">
+                        <img src="images/image1.webp" 
+                             alt="Data Science Project Dashboard"
+                             loading="lazy">
+                    </div>
+                    <div class="carousel-caption"></div>
+                </div> 
+
+                <div class="carousel-item">
+                    <div class="image-container aspect-ratio-16-9">
+                        <img src="images/image2.webp" 
+                             alt="Data Science Project Dashboard"
+                             loading="lazy">
+                    </div>
+                    <div class="carousel-caption"></div>
+                </div>             
+
+                <div class="carousel-item">
+                    <div class="image-container aspect-ratio-16-9">
+                        <img src="images/image5.webp" 
+                             alt="Data Science Project Dashboard"
+                             loading="lazy">
+                    </div>
+                    <div class="carousel-caption"></div>
+                </div>   
+
+                <div class="carousel-item">
+                    <div class="image-container aspect-ratio-16-9">
+                        <img src="images/image6.webp" 
+                             alt="Data Science Project Dashboard"
+                             loading="lazy">
+                    </div>
+                    <div class="carousel-caption"></div>
+                </div>   
+
+                <div class="carousel-item">
+                    <div class="image-container aspect-ratio-16-9">
+                        <img src="images/carousel-1.jpg.jpg" 
+                             alt="Data Science Project Dashboard"
+                             loading="lazy">
+                    </div>
+                    <div class="carousel-caption"></div>
+                </div>   
+            </div>
+            
+            <button class="carousel-btn carousel-prev">❮</button>
+            <button class="carousel-btn carousel-next">❯</button>
+            
+            <div class="carousel-dots" id="carousel-dots">
+            </div>
+        </div>
+       
+        <div class="glass-card announcements">
+            <h2>Latest Achievements</h2>
+            <div class="announcement-card">
+                <div class="announcement-date">September 15, 2023</div>
+                <h3>ABSA Bank Internship</h3>
+                <p>Participated in the Annual ABSA Bank datathon and won first place and a 6-month paid internship as a junior data analyst.</p>
+            </div>
+            <div class="announcement-card">
+                <div class="announcement-date">September 10, 2023</div>
+                <h3>Data Science Workshop</h3>
+                <p>Participated in a hands-on data science workshop and learnt practical skills in Python and machine learning.</p>
+            </div>
+            <div class="announcement-card">
+                <div class="announcement-date">September 5, 2023</div>
+                <h3>First Place in Mathematics Competition</h3>
+                <p>Won first place in the annual Horizon Mathematics Competition in 2025.</p>
+            </div>
+        </div>
+       
+       
+        <h2 style = "text-align: center;color: purple;" >Navigation Video</h2>
+
+        <div class="bottom-video-container">
+            <video class="bottom-video" controls autoplay loop>
+                <source src="20250926-2104-11.9177255.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </main>
+
+    <div class="bubbles" id="bubbles"></div>
+
+    <script>
+               document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('carousel');
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const prevBtn = document.querySelector('.carousel-prev');
+            const nextBtn = document.querySelector('.carousel-next');
+            const dotsContainer = document.getElementById('carousel-dots');
+            
+            let currentIndex = 0;
+            let autoRotateInterval;
+            const autoRotateDelay = 5000;             
+                        carouselItems.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('carousel-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+                        function goToSlide(index) {
+                currentIndex = index;
+                updateCarousel();
+            }
+            
+           
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+                       function nextSlide() {
+                currentIndex = (currentIndex + 1) % carouselItems.length;
+                updateCarousel();
+            }
+            
+            
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+                updateCarousel();
+            }
+            
+                        prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+                       function startAutoRotate() {
+                autoRotateInterval = setInterval(nextSlide, autoRotateDelay);
+            }
+            
+            function stopAutoRotate() {
+                clearInterval(autoRotateInterval);
+            }
+            
+                        startAutoRotate();
+            
+            
+            carousel.addEventListener('mouseenter', stopAutoRotate);
+            carousel.addEventListener('mouseleave', startAutoRotate);
+            
+                       updateCarousel();
+        });
+
+                function createBubbles() {
+            const bubblesContainer = document.getElementById('bubbles');
+            const bubbleCount = 15;
+            
+            for (let i = 0; i < bubbleCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                
+                const size = Math.random() * 60 + 20;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.top = `${Math.random() * 100}%`;
+                
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                bubble.style.animationDelay = `${delay}s`;
+                bubble.style.animationDuration = `${duration}s`;
+                
+                bubble.style.opacity = Math.random() * 0.5 + 0.2;
+                
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const toggleThumb = themeToggle.querySelector('.toggle-thumb');
+            const toggleIcons = themeToggle.querySelectorAll('.toggle-icon');
+            
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            
+            document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+            updateTogglePosition(currentTheme);
+            
+            themeToggle.addEventListener('click', function() {
+                const isDarkMode = document.body.classList.toggle('dark-mode');
+                const theme = isDarkMode ? 'dark' : 'light';
+                
+                localStorage.setItem('theme', theme);
+                updateTogglePosition(theme);
+            });
+            
+            function updateTogglePosition(theme) {
+                const track = themeToggle.querySelector('.toggle-track');
+                if (theme === 'dark') {
+                    toggleThumb.style.transform = 'translateX(100%)';
+                    toggleIcons[0].style.opacity = '0.5';
+                    toggleIcons[1].style.opacity = '1';
+                } else {
+                    toggleThumb.style.transform = 'translateX(0)';
+                    toggleIcons[0].style.opacity = '1';
+                    toggleIcons[1].style.opacity = '0.5';
+                }
+            }
+            
+            createBubbles();
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('navigationVideo');
+            const customPlayButton = document.getElementById('customPlayButton');
+            
+            const playVideo = () => {
+                video.play().catch(error => {
+                    console.log('Autoplay prevented:', error);
+                    customPlayButton.style.display = 'flex';
+                });
+            };
+            
+            playVideo();
+            
+            customPlayButton.addEventListener('click', function() {
+                video.play();
+                this.style.display = 'none';
+            });
+            
+            video.addEventListener('play', function() {
+                customPlayButton.style.display = 'none';
+            });
+            
+            video.addEventListener('pause', function() {
+                customPlayButton.style.display = 'flex';
+            });
+            
+            video.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        });
+        
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+            
+            updateAnalogClock(now);
+        }
+        
+        function updateAnalogClock(now) {
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours() % 12;
+            
+            const secondHand = document.getElementById('secondHand');
+            const minuteHand = document.getElementById('minuteHand');
+            const hourHand = document.getElementById('hourHand');
+            
+            const secondsDegrees = ((seconds / 60) * 360) + 90;
+            const minutesDegrees = ((minutes / 60) * 360) + ((seconds/60)*6) + 90;
+            const hoursDegrees = ((hours / 12) * 360) + ((minutes/60)*30) + 90;
+            
+            secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+            minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+            hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+        }
+        
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
